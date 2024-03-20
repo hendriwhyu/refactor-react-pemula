@@ -3,8 +3,7 @@ import { getInitialData, showFormattedDate } from "../utils";
 import autoBind from "auto-bind";
 import NoteInput from "./NoteInput";
 import NoteList from "./NoteList";
-import { Navbar, TextInput } from "flowbite-react";
-import Footer from "./Footer";
+import { Footer, Navbar, TextInput } from "flowbite-react";
 
 class NoteApp extends React.Component {
   constructor(props) {
@@ -135,7 +134,11 @@ class NoteApp extends React.Component {
             />
           </div>
         </div>
-        <Footer />
+        <Footer container className="bg-cyan-700 rounded-none">
+          <div className="w-full text-center">
+            <Footer.Copyright href="https://www.instagram.com/hendri.whyu/" className="text-white text-lg" by="Hendri Wahyu Perdana" year={2024} />
+          </div>
+        </Footer>
       </>
     );
   }
