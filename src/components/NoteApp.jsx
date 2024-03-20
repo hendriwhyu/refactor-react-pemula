@@ -96,7 +96,7 @@ class NoteApp extends React.Component {
 
     return (
       <>
-        <Navbar fluid rounded className="bg-cyan-700 text-white">
+        <Navbar fluid rounded className="bg-cyan-700 text-white rounded-none">
           <Navbar.Brand>
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
               Note App
