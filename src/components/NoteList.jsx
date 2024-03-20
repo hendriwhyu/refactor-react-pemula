@@ -6,7 +6,7 @@ const NoteList = (props) => {
   // console.table(notes);
   if (notes.length > 0) {
     return (
-      <div className="notes-list">
+      <div className="grid lg:grid-cols-4 md:grid-cols-1 gap-4 mb-12 lg:mx-0 md:mx-4 sm:mx-8">
         {notes.map((note) => (
           <NoteItem
             key={note.id}
@@ -24,7 +24,7 @@ const NoteList = (props) => {
       </div>
     );
   } else {
-    return <p className="notes-list__empty-message">Tidak ada catatan</p>;
+    return <p className="notes-list__empty-message text-center text-lg">Tidak ada catatan</p>;
   }
 };
 

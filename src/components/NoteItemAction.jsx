@@ -4,7 +4,7 @@ import ArchiveButton from "./ArchiveButton";
 const NoteItemAction = (props) => {
   const { id, onDelete, onArchive, isArchive, onUnarchive } = props;
   return (
-    <div className="note-item__action">
+    <div className="items-center justify-center space-y-4 sm:flex sm:space-x-4 sm:space-y-0">
       <DeleteButton id={id} onDelete={onDelete} />
       <ArchiveButton
         id={id}

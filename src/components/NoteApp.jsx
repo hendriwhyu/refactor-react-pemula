@@ -3,6 +3,8 @@ import { getInitialData, showFormattedDate } from "../utils";
 import autoBind from "auto-bind";
 import NoteInput from "./NoteInput";
 import NoteList from "./NoteList";
+import { Navbar, TextInput } from "flowbite-react";
+import Footer from "./Footer";
 
 class NoteApp extends React.Component {
   constructor(props) {
@@ -95,34 +97,45 @@ class NoteApp extends React.Component {
 
     return (
       <>
-        <div className="note-app__header">
-          <h1>Notes</h1>
-          <div className="note-search">
-            <input
+        <Navbar fluid rounded className="bg-cyan-700 text-white">
+          <Navbar.Brand>
+            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+              Note App
+            </span>
+          </Navbar.Brand>
+          <Navbar.Collapse>
+            <TextInput
+              id="searchBar"
               type="text"
               placeholder="Cari catatan ..."
+              className="w-64"
               value={this.state.searchText}
               onChange={(e) => this.onSearchEventHandler(e.target.value)}
             />
+          </Navbar.Collapse>
+        </Navbar>
+        <div className="my-4">
+          <NoteInput addNote={this.onAddNoteEventHandler} />
+          <div className="container mx-auto">
+            <h2 className="text-xl font-semibold mb-5">Catatan Aktif</h2>
+            <NoteList
+              onArchive={this.onArchiveNoteEventHandler}
+              onUnarchive={this.onUnArchiveNoteEventHandler}
+              onDelete={this.onDeleteNoteEventHandler}
+              notes={filteredNotes}
+            />
+          </div>
+          <div className="container mx-auto">
+            <h2 className="text-xl font-semibold mb-5">Arsip</h2>
+            <NoteList
+              onArchive={this.onArchiveNoteEventHandler}
+              onUnarchive={this.onUnArchiveNoteEventHandler}
+              onDelete={this.onDeleteNoteEventHandler}
+              notes={filteredArchiveNotes}
+            />
           </div>
         </div>
-        <div className="note-app__body">
-          <NoteInput addNote={this.onAddNoteEventHandler} />
-          <h2>Catatan Aktif</h2>
-          <NoteList
-            onArchive={this.onArchiveNoteEventHandler}
-            onUnarchive={this.onUnArchiveNoteEventHandler}
-            onDelete={this.onDeleteNoteEventHandler}
-            notes={filteredNotes}
-          />
-          <h2>Arsip</h2>
-          <NoteList
-            onArchive={this.onArchiveNoteEventHandler}
-            onUnarchive={this.onUnArchiveNoteEventHandler}
-            onDelete={this.onDeleteNoteEventHandler}
-            notes={filteredArchiveNotes}
-          />
-        </div>
+        <Footer />
       </>
     );
   }
